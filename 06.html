@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Discovery and Scale of the Fraud</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;family=Playfair+Display:wght@700;900&amp;display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+        }
+        
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: 50px 80px;
+            box-sizing: border-box;
+        }
+
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image: radial-gradient(#ffffff 1px, transparent 1px);
+            background-size: 30px 30px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Header */
+        .header {
+            margin-bottom: 30px;
+            z-index: 10;
+        }
+
+        .accent-bar {
+            width: 60px;
+            height: 6px;
+            background-color: #fbbf24; /* Amber 400 */
+            margin-bottom: 16px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: white;
+            line-height: 1.1;
+        }
+
+        /* Layout Grid */
+        .content-grid {
+            display: flex;
+            gap: 60px;
+            flex: 1;
+            z-index: 10;
+            height: 100%;
+        }
+
+        .left-panel {
+            flex: 0 0 40%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .right-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 16px;
+            padding: 40px;
+            justify-content: space-between;
+        }
+
+        /* Timeline Styling */
+        .timeline-container {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 11px;
+            top: 10px;
+            bottom: 30px;
+            width: 2px;
+            background-color: rgba(99, 102, 241, 0.3); /* Indigo */
+        }
+
+        .timeline-event {
+            position: relative;
+            margin-bottom: 45px;
+        }
+
+        .timeline-event:last-child {
+            margin-bottom: 0;
+        }
+
+        .event-dot {
+            position: absolute;
+            left: -40px;
+            top: 6px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #0f172a;
+            border: 4px solid #6366f1; /* Indigo 500 */
+            z-index: 2;
+        }
+
+        .event-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #fbbf24; /* Amber */
+            margin-bottom: 4px;
+            line-height: 1;
+        }
+
+        .event-desc {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Stats Styling */
+        .stat-group {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+
+        .stat-group:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .big-stat-label {
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .big-stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            color: #ef4444; /* Red for negative financial impact */
+            line-height: 1;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(239, 68, 68, 0.2);
+        }
+
+        .secondary-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .sec-stat-box {
+            background-color: rgba(15, 23, 42, 0.4);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #fbbf24;
+        }
+
+        .sec-stat-val {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .sec-stat-key {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+        }
+
+        /* Comparison Chart */
+        .chart-container {
+            margin-top: 20px;
+        }
+        
+        .bar-group {
+            margin-bottom: 15px;
+        }
+
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .bar-bg {
+            width: 100%;
+            height: 24px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            padding-right: 10px;
+            justify-content: flex-end;
+            color: rgba(0,0,0,0.6);
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .bar-telgi {
+            width: 100%;
+            background-color: #ef4444;
+        }
+
+        .bar-mehta {
+            width: 17%; /* 5k vs 30k is approx 1/6th */
+            background-color: #64748b;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Arrows -->
+<div class="fixed inset-0 pointer-events-none flex items-center justify-between px-6 z-50">
+  <!-- Left Arrow: Triggers navigate('prev') -->
+  <a href="05.html" onclick="navigate('05.html')"
+     class="pointer-events-auto bg-slate-800/50 hover:bg-indigo-600 text-white p-4 rounded-full transition-all text-2xl shadow-lg">
+    &larr;
+  </a>
+
+  <!-- Right Arrow: Triggers navigate('next') -->
+  <a href="07.html" onclick="navigate('07.html')" 
+     class="pointer-events-auto bg-slate-800/50 hover:bg-indigo-600 text-white p-4 rounded-full transition-all text-2xl shadow-lg">
+    &rarr;
+  </a>
+</div>
+
+</body>
+<div class="slide-container">
+<div class="bg-pattern"></div>
+<!-- Header -->
+<div class="header">
+<div class="accent-bar"></div>
+<p class="text-indigo-400 font-semibold tracking-widest text-sm mb-2 uppercase">Investigation &amp; Impact</p>
+<h2 style="position: relative; transform: translate(-2.83365px, -8.50096px);">Discovery &amp; <span class="text-indigo-300">Scale of Fraud</span></h2>
+</div>
+<div class="content-grid" style="position: relative; transform: translate(-4.72275px, -36.8375px);">
+<!-- Left Panel: Timeline -->
+<div class="left-panel">
+<h3 class="text-white text-xl font-semibold mb-8 pl-10 border-b border-slate-700 pb-4">The Unraveling</h3>
+<div class="timeline-container">
+<div class="timeline-line"></div>
+<!-- Event 1 -->
+<div class="timeline-event">
+<div class="event-dot"></div>
+<div class="event-year">2000</div>
+<div class="event-desc">
+<p><strong>The First Thread:</strong> Two men caught transporting fake stamp papers in Bengaluru. Interrogation exposes a massive supply chain.</p>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="timeline-event">
+<div class="event-dot" style="border-color: #fbbf24;"></div> <!-- Amber highlight -->
+<div class="event-year">Late 2001</div>
+<div class="event-desc">
+<p><strong>The Arrest:</strong> Abdul Karim Telgi is arrested in Ajmer. Investigations reveal the operation had been running unchecked for over a decade.</p>
+</div>
+</div>
+<!-- Event 3 -->
+<div class="timeline-event">
+<div class="event-dot"></div>
+<div class="event-year">Post-2003</div>
+<div class="event-desc">
+<p><strong>Conviction:</strong> Multiple cases filed across states. Telgi sentenced to 30 years rigorous imprisonment and massive fines.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Panel: The Numbers -->
+<div class="right-panel" style="position: relative; transform: translate(10.4972px, -0.233291px);">
+<!-- Main Stat -->
+<div class="stat-group">
+<p class="big-stat-label">Estimated Total Loss</p>
+<div class="big-stat-number">₹30,000 Cr</div>
+<p class="text-slate-400 text-sm">Approx. US$ 3-4 Billion (adjusted for inflation)</p>
+<div class="secondary-stats">
+<div class="sec-stat-box">
+<div class="sec-stat-val">12+</div>
+<div class="sec-stat-key">States Infiltrated</div>
+</div>
+<div class="sec-stat-box">
+<div class="sec-stat-val">~350</div>
+<div class="sec-stat-key">Agents Network</div>
+</div>
+</div>
+</div>
+<!-- Comparison -->
+<div class="chart-container">
+<p class="big-stat-label mb-4">Magnitude Comparison</p>
+<div class="bar-group">
+<div class="bar-label">
+<span>Telgi Scam (2003)</span>
+<span class="text-red-400 font-bold">₹30,000 Cr</span>
+</div>
+<div class="bar-bg">
+<div class="bar-fill bar-telgi"></div>
+</div>
+</div>
+<div class="bar-group">
+<div class="bar-label">
+<span>Harshad Mehta Scam (1992)</span>
+<span>₹5,000 Cr</span>
+</div>
+<div class="bar-bg">
+<div class="bar-fill bar-mehta"></div>
+</div>
+</div>
+<p class="text-xs text-slate-500 mt-2 italic" style="color: rgb(80, 95, 105);">
+<i class="fas fa-info-circle mr-1"></i> NDTV called it "India's biggest scam," putting previous market frauds in the shade.
+                </p>
+</div>
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-red-600 via-slate-800 to-indigo-900"></div>
+</div>
+
+</body></html>

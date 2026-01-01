@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Corruption Network</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+        }
+        
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: 40px 60px;
+            box-sizing: border-box;
+        }
+
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image: radial-gradient(#ffffff 1px, transparent 1px);
+            background-size: 30px 30px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Header */
+        .header {
+            margin-bottom: 30px;
+            z-index: 10;
+        }
+
+        .accent-bar {
+            width: 60px;
+            height: 6px;
+            background-color: #ef4444; /* Red 500 */
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: white;
+            line-height: 1.1;
+        }
+
+        /* Network Map Layout */
+        .network-container {
+            flex: 1;
+            position: relative;
+            z-index: 10;
+            background: rgba(30, 41, 59, 0.3); /* Slate 800 with opacity */
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Central Node */
+        .node-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background-color: #1e293b;
+            border: 4px solid #ef4444;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 20;
+            box-shadow: 0 0 40px rgba(239, 68, 68, 0.2);
+        }
+
+        .node-center img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            object-fit: cover;
+            background-color: #334155;
+        }
+
+        /* Satellite Nodes */
+        .node {
+            position: absolute;
+            width: 240px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #1e293b;
+            border-left: 4px solid;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            z-index: 15;
+            transition: transform 0.3s ease;
+        }
+
+        .node-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .node-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        .node h4 {
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .node p {
+            color: #94a3b8;
+            font-size: 0.8rem;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        /* Positioning Nodes */
+        .node-govt {
+            top: 10%;
+            left: 15%;
+            border-color: #fbbf24; /* Amber */
+        }
+        .node-govt .node-icon { background-color: rgba(251, 191, 36, 0.2); color: #fbbf24; }
+
+        .node-police {
+            top: 10%;
+            right: 15%;
+            border-color: #3b82f6; /* Blue */
+        }
+        .node-police .node-icon { background-color: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+
+        .node-print {
+            top: 45%;
+            left: 5%;
+            border-color: #a855f7; /* Purple */
+        }
+        .node-print .node-icon { background-color: rgba(168, 85, 247, 0.2); color: #a855f7; }
+
+        .node-corp {
+            top: 45%;
+            right: 5%;
+            border-color: #22c55e; /* Green */
+        }
+        .node-corp .node-icon { background-color: rgba(34, 197, 94, 0.2); color: #22c55e; }
+
+        .node-agents {
+            bottom: 10%;
+            left: 20%;
+            border-color: #f97316; /* Orange */
+        }
+        .node-agents .node-icon { background-color: rgba(249, 115, 22, 0.2); color: #f97316; }
+
+        .node-execs {
+            bottom: 10%;
+            right: 20%;
+            border-color: #ec4899; /* Pink */
+        }
+        .node-execs .node-icon { background-color: rgba(236, 72, 153, 0.2); color: #ec4899; }
+
+        /* Connection Lines (SVG) */
+        .connections {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        /* Warning Banner */
+        .warning-banner {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(239, 68, 68, 0.1);
+            border-top: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 12px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Arrows -->
+<div class="fixed inset-0 pointer-events-none flex items-center justify-between px-6 z-50">
+  <!-- Left Arrow: Triggers navigate('prev') -->
+  <a href="04.html" onclick="navigate('04.html')"
+     class="pointer-events-auto bg-slate-800/50 hover:bg-indigo-600 text-white p-4 rounded-full transition-all text-2xl shadow-lg">
+    &larr;
+  </a>
+
+  <!-- Right Arrow: Triggers navigate('next') -->
+  <a href="06.html" onclick="navigate('06.html')" 
+     class="pointer-events-auto bg-slate-800/50 hover:bg-indigo-600 text-white p-4 rounded-full transition-all text-2xl shadow-lg">
+    &rarr;
+  </a>
+</div>
+
+<div class="slide-container">
+<div class="bg-pattern"></div>
+<!-- Header -->
+<div class="header">
+<div class="accent-bar"></div>
+<p class="text-red-400 font-semibold tracking-widest text-sm mb-2 uppercase">Systemic Failure</p>
+<h2>The Web of <span class="text-red-500">Complicity</span></h2>
+</div>
+<!-- Network Map -->
+<div class="network-container" style="transform: translate(-0.917782px, -17.4379px);">
+<!-- SVG Connections -->
+<svg class="connections" height="100%" width="100%">
+<!-- Lines connecting center to nodes -->
+<line stroke="#475569" stroke-dasharray="5,5" stroke-width="2" x1="50%" x2="25%" y1="50%" y2="20%"></line>
+<line stroke="#475569" stroke-dasharray="5,5" stroke-width="2" x1="50%" x2="75%" y1="50%" y2="20%"></line>
+<line stroke="#475569" stroke-dasharray="5,5" stroke-width="2" x1="50%" x2="15%" y1="50%" y2="50%"></line>
+<line stroke="#475569" stroke-dasharray="5,5" stroke-width="2" x1="50%" x2="85%" y1="50%" y2="50%"></line>
+<line stroke="#475569" stroke-dasharray="5,5" stroke-width="2" x1="50%" x2="30%" y1="50%" y2="80%"></line>
+<line stroke="#475569" stroke-dasharray="5,5" stroke-width="2" x1="50%" x2="70%" y1="50%" y2="80%"></line>
+</svg>
+<!-- Center Node: Telgi -->
+<div class="node-center" style="transform: translate(-89.0248px, -101.874px);">
+<div class="text-red-500 text-4xl mb-2"><i class="fas fa-user-secret"></i></div>
+<h3 class="text-white font-bold text-lg text-center leading-tight">Telgi<br>Operation</h3>
+<span class="text-xs text-red-400 mt-1 font-semibold uppercase tracking-wider">The Hub</span>
+</div>
+<!-- Node: Govt Officials -->
+<div class="node node-govt" style="transform: translate(0px, -20.1912px);">
+<div class="node-header">
+<div class="node-icon"><i class="fas fa-landmark"></i></div>
+<h4>Govt Officials</h4>
+</div>
+<p>Political patronage and bureaucratic cover-ups allowed the scam to thrive unchecked.</p>
+</div>
+<!-- Node: Police -->
+<div class="node node-police" style="transform: translate(-2.75335px, -23.8623px);">
+<div class="node-header">
+<div class="node-icon"><i class="fas fa-shield-alt"></i></div>
+<h4>Police &amp; Investigators</h4>
+</div>
+<p>Bribed to ignore irregularities; some officers amassed unexplained wealth.</p>
+</div>
+<!-- Node: Printing Press -->
+<div class="node node-print" style="transform: translate(11.9312px, -22.0268px);">
+<div class="node-header">
+<div class="node-icon"><i class="fas fa-print"></i></div>
+<h4>Nashik Security Press</h4>
+</div>
+<p>Insiders provided dies/tech and under-supplied genuine papers to create artificial shortage.</p>
+</div>
+<!-- Node: Corporate Buyers -->
+<div class="node node-corp" style="transform: translate(-0.917782px, -24.7801px);">
+<div class="node-header">
+<div class="node-icon"><i class="fas fa-building"></i></div>
+<h4>Corporate Buyers</h4>
+</div>
+<p>Banks, insurers, and brokers bought fake papers without due diligence, driven by bulk discounts.</p>
+</div>
+<!-- Node: Agents -->
+<div class="node node-agents" style="transform: translate(40.3825px, 32.1224px);">
+<div class="node-header">
+<div class="node-icon"><i class="fas fa-users"></i></div>
+<h4>Distribution Agents</h4>
+</div>
+<p>~350 agents across 12+ states created a massive decentralized sales network.</p>
+</div>
+<!-- Node: Executives -->
+<div class="node node-execs" style="transform: translate(-77.0937px, 31.2046px);">
+<div class="node-header">
+<div class="node-icon"><i class="fas fa-user-tie"></i></div>
+<h4>"Management Execs"</h4>
+</div>
+<p>Professionals hired to market forgeries to corporate clients, lending a veneer of legitimacy.</p>
+</div>
+</div>
+<!-- Bottom Warning -->
+<div class="warning-banner" style="transform: translate(-1.83556px, -3.67113px);">
+<i class="fas fa-exclamation-triangle text-red-500 mr-3"></i>
+<p class="text-red-200 text-sm font-medium">Systemic Breakdown: Corruption successfully bridged the gap between public oversight and private sector demand.</p>
+</div>
+</div>
+
+</body></html>

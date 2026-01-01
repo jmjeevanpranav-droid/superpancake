@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Comparisons: Telgi vs. Other Major Scams</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        width: 1920px;
+            height: 1080px;
+        overflow: hidden;
+        font-family: 'Inter', sans-serif;
+        background-color: #0f172a; /* Slate 900 */
+        color: white;
+    }
+    
+    .slide-container {
+        width: 1920px;
+            height: 1080px;
+        display: flex;
+        flex-direction: column;
+        padding: 40px 60px;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    .bg-pattern {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.05;
+        background-image: radial-gradient(#ffffff 1px, transparent 1px);
+        background-size: 30px 30px;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    /* Header */
+    .header {
+        margin-bottom: 25px;
+        z-index: 10;
+    }
+
+    .accent-bar {
+        width: 60px;
+        height: 6px;
+        background-color: #fbbf24; /* Amber 400 */
+        margin-bottom: 12px;
+    }
+
+    h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        line-height: 1.1;
+        margin-bottom: 5px;
+    }
+
+    /* Table Styles */
+    .table-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        z-index: 10;
+        gap: 12px;
+    }
+
+    .comparison-row {
+        display: grid;
+        grid-template-columns: 200px 1fr 1fr 150px; /* Case, Mechanism, Failure, Scale */
+        gap: 20px;
+        padding: 18px 20px;
+        border-radius: 8px;
+        background-color: rgba(30, 41, 59, 0.4);
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        align-items: center;
+        transition: transform 0.2s;
+    }
+
+    .comparison-row.header-row {
+        background-color: transparent;
+        border: none;
+        padding: 0 20px 10px 20px;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+        border-radius: 0;
+    }
+
+    .header-cell {
+        color: #94a3b8;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 600;
+    }
+
+    /* Row Content */
+    .case-cell {
+        display: flex;
+        align-items: center;
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: #e2e8f0;
+    }
+
+    .case-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 12px;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+    }
+
+    .text-cell {
+        font-size: 0.9rem;
+        color: #cbd5e1;
+        line-height: 1.4;
+    }
+
+    .tag {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+    }
+
+    .tag-mech { background-color: rgba(59, 130, 246, 0.2); color: #93c5fd; }
+    .tag-gov { background-color: rgba(239, 68, 68, 0.2); color: #fca5a5; }
+
+    /* Highlight Telgi Row */
+    .row-telgi {
+        background-color: rgba(99, 102, 241, 0.15); /* Indigo tint */
+        border: 1px solid rgba(99, 102, 241, 0.4);
+        position: relative;
+    }
+
+    .row-telgi::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background-color: #6366f1;
+        border-radius: 8px 0 0 8px;
+    }
+
+    /* Bottom Insight */
+    .insight-bar {
+        margin-top: auto;
+        padding: 15px 25px;
+        background: linear-gradient(90deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 41, 59, 0.8) 100%);
+        border-left: 4px solid #fbbf24;
+        border-radius: 0 8px 8px 0;
+        display: flex;
+        align-items: center;
+    }
+
+    .insight-icon {
+        font-size: 1.5rem;
+        color: #fbbf24;
+        margin-right: 20px;
+    }
+</style>
+</head>
+<body>
+    <!-- Navigation Arrows -->
+<div class="fixed inset-0 pointer-events-none flex items-center justify-between px-6 z-50">
+  <!-- Left Arrow: Triggers navigate('prev') -->
+  <a href="11.html" onclick="navigate('11.html')"
+     class="pointer-events-auto bg-slate-800/50 hover:bg-indigo-600 text-white p-4 rounded-full transition-all text-2xl shadow-lg">
+    &larr;
+  </a>
+
+  <!-- Right Arrow: Triggers navigate('next') -->
+  <a href="13.html" onclick="navigate('13.html')" 
+     class="pointer-events-auto bg-slate-800/50 hover:bg-indigo-600 text-white p-4 rounded-full transition-all text-2xl shadow-lg">
+    &rarr;
+  </a>
+</div>
+
+<div class="slide-container">
+<div class="bg-pattern"></div>
+<!-- Header -->
+<div class="header">
+<div class="accent-bar"></div>
+<p class="text-indigo-400 font-semibold tracking-widest text-sm mb-2 uppercase">Comparative Analysis</p>
+<h2>Telgi vs. <span class="text-indigo-300">Other Major Scams</span></h2>
+</div>
+<!-- Table Container -->
+<div class="table-container">
+<!-- Header Row -->
+<div class="comparison-row header-row">
+<div class="header-cell">Case Study</div>
+<div class="header-cell">Fraud Mechanism</div>
+<div class="header-cell">Governance Failure</div>
+<div class="header-cell text-right">Est. Impact</div>
+</div>
+<!-- Telgi Row (Featured) -->
+<div class="comparison-row row-telgi">
+<div class="case-cell">
+<div class="case-icon text-indigo-400"><i class="fas fa-stamp"></i></div>
+<div>
+<span class="block text-indigo-300">Telgi Scam</span>
+<span class="text-xs font-sans font-normal text-indigo-200 opacity-70">India, 2003</span>
+</div>
+</div>
+<div class="text-cell">
+<span class="tag tag-mech">Counterfeiting</span>
+<p>Fake stamp papers printed using official dies; created artificial shortage to drive demand.</p>
+</div>
+<div class="text-cell">
+<span class="tag tag-gov">Internal Control</span>
+<p>Collusion with press officials; decentralized system with no tracking; weak procurement checks.</p>
+</div>
+<div class="text-cell text-right font-bold text-red-400">
+                ₹30,000 Cr
+            </div>
+</div>
+<!-- Harshad Mehta Row -->
+<div class="comparison-row">
+<div class="case-cell">
+<div class="case-icon text-slate-400"><i class="fas fa-chart-line"></i></div>
+<div>
+<span class="block">Harshad Mehta</span>
+<span class="text-xs font-sans font-normal text-slate-400 opacity-70">India, 1992</span>
+</div>
+</div>
+<div class="text-cell">
+<span class="tag tag-mech">Market Manipulation</span>
+<p>Exploited banking receipts (BRs) loophole to siphon funds into stock market.</p>
+</div>
+<div class="text-cell">
+<span class="tag tag-gov">Oversight</span>
+<p>Lack of coordination between banks; poor brokerage oversight; antiquated settlement systems.</p>
+</div>
+<div class="text-cell text-right font-semibold text-slate-300">
+                ~₹5,000 Cr
+            </div>
+</div>
+<!-- Enron Row -->
+<div class="comparison-row">
+<div class="case-cell">
+<div class="case-icon text-slate-400"><i class="fas fa-building"></i></div>
+<div>
+<span class="block">Enron</span>
+<span class="text-xs font-sans font-normal text-slate-400 opacity-70">USA, 2001</span>
+</div>
+</div>
+<div class="text-cell">
+<span class="tag tag-mech">Accounting Fraud</span>
+<p>Used off-balance-sheet SPVs to hide debt and inflate profits artificially.</p>
+</div>
+<div class="text-cell">
+<span class="tag tag-gov">Board/Audit</span>
+<p>Board failed oversight duties; external auditors (Arthur Andersen) compromised independence.</p>
+</div>
+<div class="text-cell text-right font-semibold text-slate-300">
+                ~$74 Billion
+                <span class="block text-xs font-normal opacity-50">(Bankruptcy)</span>
+</div>
+</div>
+<!-- Madoff Row -->
+<div class="comparison-row">
+<div class="case-cell">
+<div class="case-icon text-slate-400"><i class="fas fa-user-tie"></i></div>
+<div>
+<span class="block">Bernie Madoff</span>
+<span class="text-xs font-sans font-normal text-slate-400 opacity-70">USA, 2008</span>
+</div>
+</div>
+<div class="text-cell">
+<span class="tag tag-mech">Ponzi Scheme</span>
+<p>Paid returns to earlier investors using capital from new investors; fabricated trading records.</p>
+</div>
+<div class="text-cell">
+<span class="tag tag-gov">Regulation</span>
+<p>Regulatory bodies (SEC) ignored red flags; investors relied on reputation over due diligence.</p>
+</div>
+<div class="text-cell text-right font-semibold text-slate-300">
+                ~$65 Billion
+            </div>
+</div>
+</div>
+<!-- Bottom Insight -->
+
+</div>
+
+</body></html>

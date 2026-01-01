@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Closing Q&amp;A</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        width: 1920px;
+            height: 1080px;
+        overflow: hidden;
+        font-family: 'Inter', sans-serif;
+        background-color: #0f172a; /* Slate 900 */
+        color: white;
+    }
+    
+    .slide-container {
+        width: 1920px;
+            height: 1080px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        padding: 60px 80px;
+        box-sizing: border-box;
+    }
+
+    .bg-pattern {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.05;
+        background-image: radial-gradient(#ffffff 1px, transparent 1px);
+        background-size: 30px 30px;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    /* Layout */
+    .content-wrapper {
+        display: flex;
+        flex: 1;
+        gap: 80px;
+        align-items: center;
+        z-index: 10;
+    }
+
+    .left-section {
+        flex: 0 0 45%;
+    }
+
+    .right-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /* Typography */
+    .pre-title {
+        color: #fbbf24;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+    }
+
+    .pre-title::before {
+        content: '';
+        display: block;
+        width: 40px;
+        height: 2px;
+        background-color: #fbbf24;
+        margin-right: 15px;
+    }
+
+    h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 4.5rem;
+        line-height: 1.1;
+        margin-bottom: 30px;
+        color: white;
+    }
+
+    .contact-info {
+        margin-top: 40px;
+        padding-top: 30px;
+        border-top: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+        color: #cbd5e1;
+        font-size: 1.1rem;
+    }
+
+    .contact-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(99, 102, 241, 0.1);
+        color: #818cf8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+    }
+
+    /* Discussion Cards */
+    .discussion-card {
+        background-color: rgba(30, 41, 59, 0.5);
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        border-left: 4px solid #6366f1;
+        border-radius: 8px 12px 12px 8px;
+        padding: 25px;
+        margin-bottom: 25px;
+        position: relative;
+        transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .discussion-card:hover {
+        transform: translateX(10px);
+        background-color: rgba(30, 41, 59, 0.8);
+        border-left-color: #fbbf24;
+    }
+
+    .q-label {
+        position: absolute;
+        top: -12px;
+        left: 20px;
+        background-color: #1e293b;
+        color: #94a3b8;
+        padding: 2px 10px;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .q-text {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.3rem;
+        color: #e2e8f0;
+        margin-bottom: 8px;
+        line-height: 1.3;
+    }
+
+    .q-sub {
+        font-size: 0.9rem;
+        color: #94a3b8;
+        font-style: italic;
+    }
+
+    /* Decoration */
+    .quote-icon {
+        position: absolute;
+        bottom: 40px;
+        right: 40px;
+        font-size: 12rem;
+        color: rgba(255, 255, 255, 0.03);
+        z-index: 0;
+        font-family: 'Playfair Display', serif;
+    }
+
+</style>
+</head>
+<body>
+
+     <!-- Navigation Arrows -->
+<div class="fixed inset-0 pointer-events-none flex items-center justify-between px-6 z-50">
+  <!-- Left Arrow: Triggers navigate('prev') -->
+  <a href="13.html" onclick="navigate('13.html')"
+     class="pointer-events-auto bg-slate-800/50 hover:bg-indigo-600 text-white p-4 rounded-full transition-all text-2xl shadow-lg">
+    &larr;
+  </a>
+
+  <!-- Right Arrow: Triggers navigate('next') -->
+  <a href="undefined1.html" onclick="navigate('undefined1.html')" 
+     class="pointer-events-auto bg-slate-800/50 hover:bg-indigo-600 text-white p-4 rounded-full transition-all text-2xl shadow-lg">
+    &rarr;
+  </a>
+</div>
+
+<div class="slide-container">
+<div class="bg-pattern"></div>
+<div class="quote-icon">?</div>
+<div class="content-wrapper">
+<!-- Left Section: Title & Contact -->
+<div class="left-section">
+<div class="pre-title">Seminar Conclusion</div>
+<h1>Thank You <br><span class="text-indigo-400">&amp; Questions</span></h1>
+<p class="text-lg text-slate-300 mb-8 leading-relaxed">
+                The Telgi Scam serves as a stark reminder that ethical shortcuts and weak governance can compromise entire economies.
+            </p>
+<div class="contact-info">
+<div class="contact-item" style="position: relative; transform: translate(0px, -26.6157px); letter-spacing: 0px; line-height: 1.8;">
+<div class="contact-icon" style="position: relative; transform: translate(-2.75334px, 28.4512px); line-height: 1.1; letter-spacing: 0px; padding: 0px;"><i class="fas fa-user-tie" style="position: relative; transform: translate(-0.0004959px, -1.83558px);"></i></div>
+<span style="position: relative; transform: translate(-5.50669px, 27.5335px);">Presented by: Jeevan Pranav JM, Shri Raghav K, Harshit S, Nandha Kishan G</span><span><br></span><span><br></span><span><br></span><span><br></span><span><br></span><span><br></span><span><br></span><span><br></span><span><br></span><span><br></span><span><br></span><span><br></span><span><br></span><span><br></span>
+</div>
+<div class="contact-item" style="position: relative; transform: translate(-8.26004px, 16.5201px);">
+<div class="contact-icon"><i class="fas fa-university"></i></div>
+<span>Business Studies - 11 C</span></div>
+</div>
+</div>
+<!-- Right Section: Discussion Questions -->
+<div class="right-section">
+<h3 class="text-slate-400 text-sm font-bold uppercase tracking-widest mb-6 pl-1">Points for Discussion</h3>
+<!-- Question 1 -->
+<div class="discussion-card">
+<div class="q-label">Governance</div>
+<p class="q-text">Why didn’t buyers verify authenticity?</p>
+<p class="q-sub">Consider the role of "bulk discounts" and lack of due diligence protocols.</p>
+</div>
+<!-- Question 2 -->
+<div class="discussion-card">
+<div class="q-label">Controls</div>
+<p class="q-text">Which internal controls failed?</p>
+<p class="q-sub">Think about inventory audits, reconciliation, and vendor vetting processes.</p>
+</div>
+<!-- Question 3 -->
+<div class="discussion-card">
+<div class="q-label">Technology</div>
+<p class="q-text">How does e-Stamping change risk?</p>
+<p class="q-sub">Does digitization eliminate fraud, or just change the nature of the threat?</p>
+</div>
+</div>
+</div>
+<!-- Footer Bar -->
+<div class="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-indigo-900 via-slate-700 to-indigo-900"></div>
+</div>
+
+</body></html>

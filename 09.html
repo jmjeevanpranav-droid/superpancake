@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Economic &amp; Institutional Impact</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        width: 1920px;
+            height: 1080px;
+        overflow: hidden;
+        font-family: 'Inter', sans-serif;
+        background-color: #0f172a; /* Slate 900 */
+    }
+    
+    .slide-container {
+        width: 1920px;
+            height: 1080px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        padding: 50px 80px;
+        box-sizing: border-box;
+    }
+
+    .bg-pattern {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.05;
+        background-image: radial-gradient(#ffffff 1px, transparent 1px);
+        background-size: 30px 30px;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    /* Header */
+    .header {
+        margin-bottom: 40px;
+        z-index: 10;
+        text-align: center;
+    }
+
+    .accent-bar {
+        width: 80px;
+        height: 6px;
+        background-color: #6366f1; /* Indigo 500 */
+        margin: 0 auto 20px auto;
+    }
+
+    h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem;
+        color: white;
+        line-height: 1.1;
+        margin-bottom: 10px;
+    }
+
+    .subtitle {
+        color: #94a3b8;
+        font-size: 1.1rem;
+        font-weight: 300;
+    }
+
+    /* Three Column Layout */
+    .column-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        flex: 1;
+        z-index: 10;
+        height: 100%;
+        padding-bottom: 20px;
+    }
+
+    .impact-card {
+        background-color: rgba(30, 41, 59, 0.4);
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        border-radius: 16px;
+        padding: 30px 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+        overflow: hidden;
+    }
+
+    .impact-card:hover {
+        transform: translateY(-5px);
+        background-color: rgba(30, 41, 59, 0.6);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .card-top-accent {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+    }
+
+    .icon-wrapper {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+    .icon-wrapper::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        opacity: 0.2;
+        background-color: currentColor;
+        z-index: -1;
+        transform: scale(1.2);
+    }
+
+    .card-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 15px;
+    }
+
+    .card-desc {
+        color: #cbd5e1;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    .stat-box {
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: rgba(15, 23, 42, 0.5);
+        border-radius: 8px;
+        width: 100%;
+    }
+
+    .stat-val {
+        font-size: 1.25rem;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    /* Specific Card Styles */
+    /* Revenue */
+    .card-revenue .card-top-accent { background-color: #ef4444; }
+    .card-revenue .icon-wrapper { color: #ef4444; background-color: rgba(239, 68, 68, 0.1); }
+    .card-revenue .stat-val { color: #ef4444; }
+
+    /* Legal */
+    .card-legal .card-top-accent { background-color: #fbbf24; }
+    .card-legal .icon-wrapper { color: #fbbf24; background-color: rgba(251, 191, 36, 0.1); }
+    .card-legal .stat-val { color: #fbbf24; }
+
+    /* Trust */
+    .card-trust .card-top-accent { background-color: #3b82f6; }
+    .card-trust .icon-wrapper { color: #3b82f6; background-color: rgba(59, 130, 246, 0.1); }
+    .card-trust .stat-val { color: #3b82f6; }
+
+    .stat-label {
+        color: #94a3b8;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+</style>
+</head>
+<body>
+    <!-- Navigation Arrows -->
+<div class="fixed inset-0 pointer-events-none flex items-center justify-between px-6 z-50">
+  <!-- Left Arrow: Triggers navigate('prev') -->
+  <a href="08.html" onclick="navigate('08.html')"
+     class="pointer-events-auto bg-slate-800/50 hover:bg-indigo-600 text-white p-4 rounded-full transition-all text-2xl shadow-lg">
+    &larr;
+  </a>
+
+  <!-- Right Arrow: Triggers navigate('next') -->
+  <a href="10.html" onclick="navigate('10.html')" 
+     class="pointer-events-auto bg-slate-800/50 hover:bg-indigo-600 text-white p-4 rounded-full transition-all text-2xl shadow-lg">
+    &rarr;
+  </a>
+</div>
+
+<div class="slide-container">
+<div class="bg-pattern"></div>
+<!-- Header -->
+<div class="header">
+<div class="accent-bar"></div>
+<h2>Economic &amp; Institutional Impact</h2>
+<p class="subtitle">The ripples of the scam paralyzed government revenue and public confidence</p>
+</div>
+<!-- Three Columns -->
+<div class="column-container">
+<!-- Card 1: Revenue -->
+<div class="impact-card card-revenue">
+<div class="card-top-accent"></div>
+<div class="icon-wrapper">
+<i class="fas fa-hand-holding-usd"></i>
+</div>
+<h3 class="card-title">Fiscal Hemorrhage</h3>
+<p class="card-desc">
+                The state treasury suffered a massive blow as stamp duty—a critical revenue source—was siphoned off. Legitimate funds meant for public infrastructure went into criminal hands.
+            </p>
+<div class="stat-box">
+<span class="stat-val">Billions Lost</span>
+<span class="stat-label">Direct Revenue Leakage</span>
+</div>
+</div>
+<!-- Card 2: Legal System -->
+<div class="impact-card card-legal">
+<div class="card-top-accent"></div>
+<div class="icon-wrapper">
+<i class="fas fa-gavel"></i>
+</div>
+<h3 class="card-title">Legal Paralysis</h3>
+<p class="card-desc">
+                Countless property deals, business contracts, and affidavits were rendered potentially invalid. The legal system faced a nightmare scenario of verifying years of documentation.
+            </p>
+<div class="stat-box">
+<span class="stat-val">Validity Crisis</span>
+<span class="stat-label">Years of Contracts at Risk</span>
+</div>
+</div>
+<!-- Card 3: Public Trust -->
+<div class="impact-card card-trust">
+<div class="card-top-accent"></div>
+<div class="icon-wrapper">
+<i class="fas fa-users-slash"></i>
+</div>
+<h3 class="card-title">Erosion of Trust</h3>
+<p class="card-desc">
+                Public confidence in government certification plummeted. The realization that even "official" papers could be fake sent shockwaves through the banking and corporate sectors.
+            </p>
+<div class="stat-box">
+<span class="stat-val">Systemic Decay</span>
+<span class="stat-label">Institutional Credibility Lost</span>
+</div>
+</div>
+</div>
+<!-- Bottom Note -->
+<div class="absolute bottom-6 w-full text-center left-0">
+<p class="text-slate-500 text-sm italic" style="color: rgb(209, 217, 234);">
+<i class="fas fa-quote-left text-slate-600 mr-2"></i>
+            The scam revealed deep moral decay, affecting not just finances but the sanctity of legal instruments.
+            <i class="fas fa-quote-right text-slate-600 ml-2"></i>
+</p>
+</div>
+</div>
+
+</body></html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telgi Scam • 2003</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0; padding: 0; width: 100vw; height: 100vh;
+      background: #0f172a; display: flex; align-items: center;
+      justify-content: center; font-family: 'Inter', sans-serif;
+      color: white; overflow: hidden;
+      /* CRITICAL: Allows custom swipe gestures */
+      touch-action: pan-y;
+      overscroll-behavior-x: none;
+    }
+
+    .bg-pattern {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(#ffffff 1px, transparent 1px);
+      background-size: 30px 30px; opacity: 0.05; pointer-events: none;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-container { animation: slideUp 0.8s ease-out forwards; }
+
+    .nav-btn {
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+    
+    .nav-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.4);
+      border-color: #818cf8;
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-pattern"></div>
+
+<div class="text-center z-10 animate-container">
+  <h1 class="text-4xl font-bold text-indigo-300 mb-4" style="font-family:'Playfair Display',serif;">
+    Telgi Stamp Paper Scam (2003)
+  </h1>
+  <p class="text-slate-300 text-sm tracking-wide uppercase mb-6">Select an Episode</p>
+
+  <div class="grid grid-cols-4 gap-4 w-[600px] mx-auto">
+    <a href="01.html" class="nav-btn px-4 py-3 bg-slate-800 rounded text-white hover:bg-indigo-600 text-sm font-medium text-center">Episode 01</a>
+    <a href="02.html" class="nav-btn px-4 py-3 bg-slate-800 rounded text-white hover:bg-indigo-600 text-sm font-medium text-center">Episode 02</a>
+    <a href="03.html" class="nav-btn px-4 py-3 bg-slate-800 rounded text-white hover:bg-indigo-600 text-sm font-medium text-center">Episode 03</a>
+    <a href="04.html" class="nav-btn px-4 py-3 bg-slate-800 rounded text-white hover:bg-indigo-600 text-sm font-medium text-center">Episode 04</a>
+    <a href="05.html" class="nav-btn px-4 py-3 bg-slate-800 rounded text-white hover:bg-indigo-600 text-sm font-medium text-center">Episode 05</a>
+    <a href="06.html" class="nav-btn px-4 py-3 bg-slate-800 rounded text-white hover:bg-indigo-600 text-sm font-medium text-center">Episode 06</a>
+    <a href="07.html" class="nav-btn px-4 py-3 bg-slate-800 rounded text-white hover:bg-indigo-600 text-sm font-medium text-center">Episode 07</a>
+    <a href="08.html" class="nav-btn px-4 py-3 bg-slate-800 rounded text-white hover:bg-indigo-600 text-sm font-medium text-center">Episode 08</a>
+    <a href="09.html" class="nav-btn px-4 py-3 bg-slate-800 rounded text-white hover:bg-indigo-600 text-sm font-medium text-center">Episode 09</a>
+    <a href="10.html" class="nav-btn px-4 py-3 bg-slate-800 rounded text-white hover:bg-indigo-600 text-sm font-medium text-center">Episode 10</a>
+    <a href="11.html" class="nav-btn px-4 py-3 bg-slate-800 rounded text-white hover:bg-indigo-600 text-sm font-medium text-center">Episode 11</a>
+    <a href="12.html" class="nav-btn px-4 py-3 bg-slate-800 rounded text-white hover:bg-indigo-600 text-sm font-medium text-center">Episode 12</a>
+    <a href="13.html" class="nav-btn px-4 py-3 bg-slate-800 rounded text-white hover:bg-indigo-600 text-sm font-medium text-center">Episode 13</a>
+    <a href="14.html" class="nav-btn px-4 py-3 bg-slate-800 rounded text-white hover:bg-indigo-600 text-sm font-medium text-center">Episode 14</a>
+  </div>
+</div>
+
+</body>
+</html>

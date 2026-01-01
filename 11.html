@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Lessons Learned: People, Ethics, Deterrence</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        width: 1920px;
+            height: 1080px;
+        overflow: hidden;
+        font-family: 'Inter', sans-serif;
+        background-color: #0f172a; /* Slate 900 */
+    }
+    
+    .slide-container {
+        width: 1920px;
+            height: 1080px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        padding: 50px 80px;
+        box-sizing: border-box;
+    }
+
+    /* Header */
+    .header {
+        margin-bottom: 40px;
+        z-index: 10;
+        text-align: center;
+    }
+
+    .accent-bar {
+        width: 80px;
+        height: 6px;
+        background-color: #6366f1; /* Indigo 500 */
+        margin: 0 auto 20px auto;
+    }
+
+    h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3rem;
+        color: white;
+        line-height: 1.1;
+        margin-bottom: 10px;
+    }
+
+    .subtitle {
+        color: #94a3b8;
+        font-size: 1.1rem;
+        font-weight: 300;
+    }
+
+    /* Three Column Layout */
+    .column-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        flex: 1;
+        z-index: 10;
+        height: 100%;
+        padding-bottom: 20px;
+    }
+
+    .impact-card {
+        background-color: rgba(30, 41, 59, 0.4);
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        border-radius: 16px;
+        padding: 30px 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+        overflow: hidden;
+    }
+
+    .card-top-accent {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+    }
+
+    .icon-wrapper {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+    .icon-wrapper::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        opacity: 0.2;
+        background-color: currentColor;
+        z-index: -1;
+        transform: scale(1.2);
+    }
+
+    .card-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 15px;
+    }
+
+    .card-desc {
+        color: #cbd5e1;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    .stat-box {
+        margin-top: auto;
+        padding: 10px 15px;
+        background-color: rgba(15, 23, 42, 0.5);
+        border-radius: 8px;
+        width: 100%;
+    }
+
+    .stat-val {
+        font-size: 1.1rem;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 4px;
+    }
+
+    .stat-label {
+        color: #94a3b8;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    /* Specific Card Styles */
+    /* Whistleblower */
+    .card-whistle .card-top-accent { background-color: #06b6d4; } /* Cyan 500 */
+    .card-whistle .icon-wrapper { color: #06b6d4; background-color: rgba(6, 182, 212, 0.1); }
+    .card-whistle .stat-val { color: #06b6d4; }
+
+    /* Ethics */
+    .card-ethics .card-top-accent { background-color: #a855f7; } /* Purple 500 */
+    .card-ethics .icon-wrapper { color: #a855f7; background-color: rgba(168, 85, 247, 0.1); }
+    .card-ethics .stat-val { color: #a855f7; }
+
+    /* Deterrence */
+    .card-legal .card-top-accent { background-color: #f43f5e; } /* Rose 500 */
+    .card-legal .icon-wrapper { color: #f43f5e; background-color: rgba(244, 63, 94, 0.1); }
+    .card-legal .stat-val { color: #f43f5e; }
+
+</style>
+</head>
+<body>
+    <!-- Navigation Arrows -->
+<div class="fixed inset-0 pointer-events-none flex items-center justify-between px-6 z-50">
+  <!-- Left Arrow: Triggers navigate('prev') -->
+  <a href="10.html" onclick="navigate('10.html')"
+     class="pointer-events-auto bg-slate-800/50 hover:bg-indigo-600 text-white p-4 rounded-full transition-all text-2xl shadow-lg">
+    &larr;
+  </a>
+
+  <!-- Right Arrow: Triggers navigate('next') -->
+  <a href="12.html" onclick="navigate('12.html')" 
+     class="pointer-events-auto bg-slate-800/50 hover:bg-indigo-600 text-white p-4 rounded-full transition-all text-2xl shadow-lg">
+    &rarr;
+  </a>
+</div>
+
+<div class="slide-container">
+<!-- Header -->
+<div class="header">
+<div class="accent-bar"></div>
+<h2>Lessons Learned: People &amp; Ethics</h2>
+<p class="subtitle">Strengthening the human firewall through protection, training, and deterrence</p>
+</div>
+<!-- Three Columns -->
+<div class="column-container">
+<!-- Card 1: Whistleblowers -->
+<div class="impact-card card-whistle">
+<div class="card-top-accent"></div>
+<div class="icon-wrapper">
+<i class="fas fa-bullhorn"></i>
+</div>
+<h3 class="card-title">Whistleblower Support</h3>
+<p class="card-desc">
+                The Telgi scam was exposed by an insider tip. Encouraging employees to report irregularities through safe, anonymous channels is crucial for early fraud detection.
+            </p>
+<div class="stat-box">
+<span class="stat-val">Protection &amp; Anonymity</span>
+<span class="stat-label">Critical for Early Detection</span>
+</div>
+</div>
+<!-- Card 2: Ethics Training -->
+<div class="impact-card card-ethics">
+<div class="card-top-accent"></div>
+<div class="icon-wrapper">
+<i class="fas fa-chalkboard-teacher"></i>
+</div>
+<h3 class="card-title">Ethics &amp; Training</h3>
+<p class="card-desc">
+                Regular training raises awareness of fraud risks. When officials and employees understand the consequences of corruption, they are empowered to refuse illicit demands.
+            </p>
+<div class="stat-box">
+<span class="stat-val">Culture of Integrity</span>
+<span class="stat-label">Empowering Good Decisions</span>
+</div>
+</div>
+<!-- Card 3: Legal Deterrence -->
+<div class="impact-card card-legal">
+<div class="card-top-accent"></div>
+<div class="icon-wrapper">
+<i class="fas fa-balance-scale"></i>
+</div>
+<h3 class="card-title">Legal Deterrence</h3>
+<p class="card-desc">
+                Harsh penalties—like Telgi's multi-decade imprisonment—and strict enforcement of laws like the Stamp Act reinforce the message that fraud will not be tolerated.
+            </p>
+<div class="stat-box">
+<span class="stat-val">Zero Tolerance</span>
+<span class="stat-label">Strict Legal Enforcement</span>
+</div>
+</div>
+</div>
+<!-- Bottom Note -->
+<div class="absolute bottom-6 w-full text-center left-0">
+<p class="text-slate-500 text-sm italic" style="color: rgb(219, 219, 222);">
+<i class="fas fa-quote-left text-slate-600 mr-2"></i>
+            Strong laws and safe reporting channels can stop schemes before they grow into systemic failures.
+            <i class="fas fa-quote-right text-slate-600 ml-2"></i>
+</p>
+</div>
+</div>
+
+</body></html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Background: Telgi and Stamp Papers</title>
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        background-color: #0f172a;
+        font-family: 'Inter', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .slide-container {
+        width: 100vw;
+        height: 100vh;
+        padding: 50px 80px;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    .bg-pattern {
+        position: absolute;
+        inset: 0;
+        opacity: 0.05;
+        background-image: radial-gradient(#ffffff 1px, transparent 1px);
+        background-size: 30px 30px;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .header {
+        z-index: 10;
+        margin-bottom: 45px;
+    }
+
+    .accent-bar {
+        width: 60px;
+        height: 6px;
+        background-color: #fbbf24;
+        margin-bottom: 16px;
+    }
+
+    h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3.4rem;
+        color: white;
+        line-height: 1.15;
+    }
+
+    .content-grid {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        z-index: 10;
+    }
+
+    .column-card {
+        background-color: rgba(30, 41, 59, 0.4);
+        border: 1px solid rgba(148,163,184,0.12);
+        border-radius: 14px;
+        padding: 36px;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+    }
+
+    .card-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .icon-circle {
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 18px;
+        font-size: 1.8rem;
+    }
+
+    .col-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        color: #e2e8f0;
+        margin: 0;
+        font-weight: 600;
+    }
+
+    /* Text Sizing Upgrade */
+    p {
+        color: #e2e8f0;
+        font-size: 1.15rem;
+        line-height: 1.8;
+        font-weight: 400;
+        margin: 0 0 20px 0;
+    }
+
+    .timeline-year {
+        font-size: 1.15rem;
+        font-weight: 500;
+        color: #ef4444;
+        margin-bottom: 6px;
+        display: block;
+    }
+
+    .feature-item {
+        background-color: rgba(15, 23, 42, 0.3);
+        padding: 18px;
+        border-radius: 8px;
+        margin-bottom: 28px;
+        display: flex;
+        align-items: flex-start;
+    }
+
+    .feature-icon {
+        color: #fbbf24;
+        margin-right: 18px;
+        margin-top: 4px;
+        font-size: 1.3rem;
+    }
+
+    .column-card p:last-child {
+        margin-bottom: 0;
+    }
+
+    strong {
+        color: white;
+        font-weight: 600;
+    }
+
+    .bottom-bar {
+        position: absolute;
+        bottom: 0; left: 0;
+        width: 100%; height: 2px;
+        background: linear-gradient(to right, #1e293b, #312e81, #1e293b);
+    }
+
+    .col-telgi .icon-circle {
+        background-color: rgba(239, 68, 68, 0.1);
+        color: #ef4444;
+    }
+
+    .col-stamp .icon-circle {
+        background-color: rgba(251, 191, 36, 0.1);
+        color: #fbbf24;
+    }
+</style>
+</head>
+
+<body>
+
+    <!-- Navigation Arrows -->
+<div class="fixed inset-0 pointer-events-none flex items-center justify-between px-6 z-50">
+  <!-- Left Arrow: Triggers navigate('prev') -->
+  <a href="02.html" onclick="navigate('02.html')"
+     class="pointer-events-auto bg-slate-800/50 hover:bg-indigo-600 text-white p-4 rounded-full transition-all text-2xl shadow-lg">
+    &larr;
+  </a>
+
+  <!-- Right Arrow: Triggers navigate('next') -->
+  <a href="04.html" onclick="navigate('04.html')" 
+     class="pointer-events-auto bg-slate-800/50 hover:bg-indigo-600 text-white p-4 rounded-full transition-all text-2xl shadow-lg">
+    &rarr;
+  </a>
+</div>
+
+<div class="slide-container">
+    <div class="bg-pattern"></div>
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="accent-bar"></div>
+        <p class="text-indigo-400 font-semibold tracking-widest text-sm uppercase">Background Context</p>
+        <h2>Abdul Karim Telgi &amp; <span class="text-indigo-300">The Stamp Paper System</span></h2>
+    </div>
+
+    <!-- GRID -->
+    <div class="content-grid">
+
+        <!-- LEFT -->
+        <div class="column-card col-telgi">
+            <div class="card-header">
+                <div class="icon-circle"><i class="fas fa-user-secret"></i></div>
+                <h3 class="col-title">The Mastermind</h3>
+            </div>
+
+            <p class="timeline-year">EARLY LIFE (b. 1961)</p>
+            <p>Born in Karnataka. Supported his own education selling fruits on trains...</p>
+
+            <p class="timeline-year">1980s – 1990s</p>
+            <p>Spent ~7 years in Saudi Arabia. Began forging passports...</p>
+
+            <p class="timeline-year">1994: THE PIVOT</p>
+            <p>Acquired a <strong>legitimate stamp vendor license</strong>, enabling scale...</p>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="column-card col-stamp">
+            <div class="card-header">
+                <div class="icon-circle"><i class="fas fa-file-contract"></i></div>
+                <h3 class="col-title">Legal Role of Stamp Papers</h3>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-landmark"></i></div>
+                <p><strong>Proof of Tax Payment</strong><br>Stamp papers act as proof stamp-duty has been paid.</p>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon"><i class="fas fa-gavel"></i></div>
+                <p><strong>Legal Validity</strong><br>Contracts without proper stamp duty may be invalid in court.</p>
+            </div>
+
+            <div class="feature-item border-l-4 border-red-500 bg-red-900 bg-opacity-10">
+                <div class="feature-icon text-red-400"><i class="fas fa-exclamation-triangle"></i></div>
+                <p><strong class="text-red-300">The Scam's Impact</strong><br>Fake stamps steal tax revenue + destroy legal transaction validity.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-bar"></div>
+</div>
+</body>
+</html>

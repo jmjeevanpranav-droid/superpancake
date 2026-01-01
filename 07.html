@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Corporate Governance Failures</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        font-family: 'Inter', sans-serif;
+        background-color: #0f172a; /* Slate 900 */
+    }
+    
+    .slide-container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: row; /* Split layout */
+        position: relative;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .bg-pattern {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.05;
+        background-image: radial-gradient(#ffffff 1px, transparent 1px);
+        background-size: 30px 30px;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    /* Left Panel Styles */
+    .left-panel {
+        flex: 0 0 35%;
+        background-color: #1e293b; /* Slate 800 */
+        padding: 60px 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        z-index: 10;
+        border-right: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .accent-bar {
+        width: 60px;
+        height: 6px;
+        background-color: #ef4444; /* Red 500 */
+        margin-bottom: 24px;
+    }
+
+    h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3.5rem;
+        line-height: 1.1;
+        color: white;
+        margin-bottom: 30px;
+    }
+
+    .context-text {
+        color: #cbd5e1;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 40px;
+    }
+
+    .visual-icon {
+        font-size: 8rem;
+        color: rgba(239, 68, 68, 0.1);
+        position: absolute;
+        bottom: -20px;
+        right: -20px;
+        transform: rotate(-15deg);
+    }
+
+    /* Right Panel Styles */
+    .right-panel {
+        flex: 1;
+        padding: 60px 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        z-index: 10;
+    }
+
+    /* Checklist Items */
+    .checklist-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .checklist-item {
+        display: flex;
+        align-items: flex-start;
+        background-color: rgba(30, 41, 59, 0.5);
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        border-radius: 12px;
+        padding: 20px;
+        transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .checklist-item:hover {
+        background-color: rgba(30, 41, 59, 0.8);
+        transform: translateX(5px);
+        border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    .item-marker {
+        flex-shrink: 0;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background-color: rgba(239, 68, 68, 0.15); /* Red tint */
+        color: #ef4444;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+        font-size: 1.2rem;
+    }
+
+    .item-content {
+        flex: 1;
+    }
+
+    .item-title {
+        color: #e2e8f0;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 6px;
+    }
+
+    .item-desc {
+        color: #94a3b8;
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+
+    /* Status Badge */
+    .status-badge {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        background-color: rgba(239, 68, 68, 0.2);
+        color: #fca5a5;
+        margin-bottom: 15px;
+    }
+
+</style>
+</head>
+<body>
+    <!-- Navigation Arrows -->
+<div class="fixed inset-0 pointer-events-none flex items-center justify-between px-6 z-50">
+  <!-- Left Arrow: Triggers navigate('prev') -->
+  <a href="06.html" onclick="navigate('06.html')"
+     class="pointer-events-auto bg-slate-800/50 hover:bg-indigo-600 text-white p-4 rounded-full transition-all text-2xl shadow-lg">
+    &larr;
+  </a>
+
+  <!-- Right Arrow: Triggers navigate('next') -->
+  <a href="08.html" onclick="navigate('08.html')" 
+     class="pointer-events-auto bg-slate-800/50 hover:bg-indigo-600 text-white p-4 rounded-full transition-all text-2xl shadow-lg">
+    &rarr;
+  </a>
+</div>
+
+<div class="slide-container">
+<div class="bg-pattern"></div>
+<!-- Left Panel: Context -->
+<div class="left-panel">
+<div class="accent-bar"></div>
+<div class="status-badge">Internal Control Breakdown</div>
+<h2>Corporate Governance <span class="text-red-500">Failures</span></h2>
+<p class="context-text">
+            The scam wasn't just criminal ingenuity; it was enabled by a collapse of checks and balances within the very institutions designed to prevent fraud.
+        </p>
+<div class="mt-8 border-t border-slate-700 pt-8">
+<p class="text-indigo-400 text-sm font-bold uppercase tracking-widest mb-2">Key Lesson</p>
+<p class="text-slate-400 text-sm italic" style="color: rgb(215, 217, 218);">
+                "Trust but verify" was replaced by "Trust and ignore" due to profit pressures and systemic lethargy.
+            </p>
+</div>
+<i class="fas fa-shield-alt visual-icon" style="transform: translate(-27.8801px, -155.834px);"><s><s><em><em></em></em></s></s></i>
+</div>
+<!-- Right Panel: Checklist -->
+<div class="right-panel" style="position: relative; transform: translate(-0.961122px, -3.4e-06px);">
+<div class="checklist-container">
+<!-- Item 1 -->
+<div class="checklist-item">
+<div class="item-marker">
+<i class="fas fa-times"></i>
+</div>
+<div class="item-content">
+<h3 class="item-title">Procurement Blindness</h3>
+<p class="item-desc">
+                        Banks and insurance firms purchased papers from unauthorized third-party vendors without verifying authenticity with state treasuries.
+                    </p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="checklist-item">
+<div class="item-marker">
+<i class="fas fa-search-minus"></i>
+</div>
+<div class="item-content">
+<h3 class="item-title">Weak Internal Controls</h3>
+<p class="item-desc">
+                        Complete lack of periodic audits, stock reconciliation, or "mystery shopper" checks to validate the legitimacy of sensitive documents.
+                    </p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="checklist-item">
+<div class="item-marker">
+<i class="fas fa-user-slash"></i>
+</div>
+<div class="item-content">
+<h3 class="item-title">Due Diligence Gaps</h3>
+<p class="item-desc">
+                        Telgi employed "management executives" to sell forgeries. Companies failed to vet these intermediaries or question their unauthorized bulk discounts.
+                    </p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="checklist-item">
+<div class="item-marker">
+<i class="fas fa-chart-line"></i>
+</div>
+<div class="item-content">
+<h3 class="item-title">Risk Management Void</h3>
+<p class="item-desc">
+                        No red-flag triggers for anomalies. Massive spikes in stamp paper purchases during an "official shortage" went unquestioned.
+                    </p>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="checklist-item">
+<div class="item-marker">
+<i class="fas fa-balance-scale-right"></i>
+</div>
+<div class="item-content">
+<h3 class="item-title">Incentive Misalignment</h3>
+<p class="item-desc">
+                        Operational speed and cost-saving (via discounts) were prioritized over compliance and ethical sourcing.
+                    </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

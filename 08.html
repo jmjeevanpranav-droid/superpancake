@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Regulatory and Systemic Lapses</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+        }
+        
+        .slide-container {
+            width: 1920px;
+            height: 1080px;
+            display: flex;
+            position: relative;
+            padding: 60px 80px;
+            box-sizing: border-box;
+        }
+
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image: url('data:image/svg+xml;utf8,<svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><circle cx="1" cy="1" r="1" fill="white"/></svg>');
+            background-size: 30px 30px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .left-panel {
+            flex: 0 0 35%;
+            padding-right: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .right-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            color: white;
+            margin-bottom: 24px;
+        }
+
+        .accent-bar {
+            width: 60px;
+            height: 6px;
+            background-color: #fbbf24; /* Amber 400 */
+            margin-bottom: 24px;
+        }
+
+        .info-card {
+            background-color: rgba(30, 41, 59, 0.7); /* Slate 800 with opacity */
+            border-left: 4px solid #f87171; /* Red 400 */
+            padding: 20px 24px;
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:nth-child(2) { border-left-color: #fb923c; } /* Orange 400 */
+        .info-card:nth-child(3) { border-left-color: #fbbf24; } /* Amber 400 */
+        .info-card:nth-child(4) { border-left-color: #fca5a5; } /* Red 300 */
+        .info-card:nth-child(5) { border-left-color: #fdba74; } /* Orange 300 */
+
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            background-color: rgba(248, 113, 113, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .card-content h3 {
+            color: #e2e8f0;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .card-content p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin: 0;
+        }
+        
+        .number-watermark {
+            position: absolute;
+            bottom: -40px;
+            left: -20px;
+            font-family: 'Playfair Display', serif;
+            font-size: 12rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Arrows -->
+<div class="fixed inset-0 pointer-events-none flex items-center justify-between px-6 z-50">
+  <!-- Left Arrow: Triggers navigate('prev') -->
+  <a href="07.html" onclick="navigate('07.html')"
+     class="pointer-events-auto bg-slate-800/50 hover:bg-indigo-600 text-white p-4 rounded-full transition-all text-2xl shadow-lg">
+    &larr;
+  </a>
+
+  <!-- Right Arrow: Triggers navigate('next') -->
+  <a href="09.html" onclick="navigate('09.html')" 
+     class="pointer-events-auto bg-slate-800/50 hover:bg-indigo-600 text-white p-4 rounded-full transition-all text-2xl shadow-lg">
+    &rarr;
+  </a>
+</div>
+
+<div class="slide-container">
+<div class="bg-pattern"></div>
+<div class="left-panel">
+<div class="accent-bar"></div>
+<p class="text-red-400 font-semibold tracking-widest text-sm mb-2 uppercase">Systemic Failures</p>
+<h2>Regulatory &amp; <br><span class="text-red-300">Systemic Lapses</span></h2>
+<p class="text-slate-300 text-lg leading-relaxed mb-8" style="color: rgb(220, 214, 214);">
+                The Telgi scam exposed fundamental weaknesses in how stamp paper systems were designed, managed, and monitored by the state.
+            </p>
+<div class="number-watermark" style="transform: translate(5.1498px, -45.5807px);">07</div>
+</div>
+<div class="right-panel">
+<!-- Point 1 -->
+<div class="info-card">
+<div class="icon-box">
+<i class="fas fa-sitemap text-red-400 text-xl"></i>
+</div>
+<div class="card-content">
+<h3>Decentralized Chaos</h3>
+<p>State-managed supply chains lacked central oversight or standardized protocols, creating exploitable fragmentation.</p>
+</div>
+</div>
+<!-- Point 2 -->
+<div class="info-card">
+<div class="icon-box">
+<i class="fas fa-print text-orange-400 text-xl"></i>
+</div>
+<div class="card-content">
+<h3>Outdated Technology</h3>
+<p>Reliance on obsolete printing tech and simple security features made papers easy to forge with retired government equipment.</p>
+</div>
+</div>
+<!-- Point 3 -->
+<div class="info-card">
+<div class="icon-box">
+<i class="fas fa-boxes text-amber-400 text-xl"></i>
+</div>
+<div class="card-content">
+<h3>Inadequate Tracking</h3>
+<p>Poor inventory management allowed Telgi to engineer artificial shortages without triggering immediate alarms.</p>
+</div>
+</div>
+<!-- Point 4 -->
+<div class="info-card">
+<div class="icon-box">
+<i class="fas fa-eye-slash text-red-300 text-xl"></i>
+</div>
+<div class="card-content">
+<h3>Fragmented Oversight</h3>
+<p>Responsibility was split across multiple departments and vendors, meaning no single authority held accountability.</p>
+</div>
+</div>
+<!-- Point 5 -->
+<div class="info-card">
+<div class="icon-box">
+<i class="fas fa-comments text-orange-300 text-xl"></i>
+</div>
+<div class="card-content">
+<h3>Information Silos</h3>
+<p>Limited data sharing between agencies meant suspicious patterns in one region were not cross-referenced elsewhere.</p>
+</div>
+</div>
+</div>
+<!-- Bottom Bar -->
+<div class="absolute bottom-0 left-0 w-full h-2 bg-red-900"></div>
+</div>
+
+</body></html>
